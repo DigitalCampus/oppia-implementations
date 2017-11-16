@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
 {% load i18n %} 
 {% load staticfiles %}
+{% load thumbnail %}
 
 {% block content %}
 
@@ -11,5 +12,18 @@
 	<div style="max-width:500px; text-align:center; margin: 10px auto ">
 	<h2>{% trans 'OppiaMobile Implementations' %}</h2>
 	</div>
+	
+	{% for implementation in implementations %}
+		<div style="max-width:600px; text-align:left; margin: 10px auto ">
+			{% thumbnail implementation.implementation_logo "50x50" crop="center" as im %}
+				<h3><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+			{% empty %}
+				<h3 style="padding-left:60px">
+			{% endthumbnail %}
+			{{ implementation.title }}</h3>
+			<p>{{ implementation.description }} </p>
+			
+		</div>
+	{% endfor %}
 
 {% endblock %}

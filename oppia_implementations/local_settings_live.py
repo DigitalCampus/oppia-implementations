@@ -2,4 +2,4 @@
 
 def modify(settings):
     
-    settings['INSTALLED_APPS'] += ('tastypie',)
+    settings['INSTALLED_APPS'] += ('tastypie','sorl.thumbnail',)
