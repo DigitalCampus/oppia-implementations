@@ -4,7 +4,7 @@ from django.contrib import admin
 from oppia_implementations.models import OppiaImplementation, ImplementationDataKV
 
 class OppiaImplementationsAdmin(admin.ModelAdmin):
-    list_display = ('title', )
+    list_display = ('title', 'organisation', 'is_active')
     
 class ImplementationDataKVAdmin(admin.ModelAdmin):
     list_display = ('implementation', 'key', 'value' )
