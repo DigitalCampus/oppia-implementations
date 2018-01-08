@@ -16,7 +16,7 @@
 	<div class="container" style="max-width:800px;">
 	{% for implementation in implementations %}
 		
-		<div class="row">
+		<div class="row" style="margin-bottom:15px;">
 			<div class="col-xs-1">
 			{% thumbnail implementation.implementation_logo "50x50" crop="center" as im %}
 				<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">				
@@ -26,13 +26,13 @@
 			<h3>{{ implementation.title }}</h3>
 			<p>{{ implementation.description }}</p>
 			{% if implementation.app_download_url %}
-				<p>{% trans 'App download:' %} <a href="{{ implementation.app_download_url }}">{{ implementation.app_download_url }}</a></p>
+				{% trans 'App download:' %} <a href="{{ implementation.app_download_url }}">{{ implementation.app_download_url }}</a><br/>
 			{% endif %}	
 			{% if implementation.app_code_url %}
-				<p>{% trans 'App code:' %} <a href="{{ app_code_url }}">{{ implementation.app_code_url }}</a></p>
+				{% trans 'App code:' %} <a href="{{ app_code_url }}">{{ implementation.app_code_url }}</a><br/>
 			{% endif %}	
 			{% if implementation.server_code_url %}
-				<p>{% trans 'Server code:' %} <a href="{{ server_code_url }}">{{ implementation.server_code_url }}</a></p>
+				{% trans 'Server code:' %} <a href="{{ server_code_url }}">{{ implementation.server_code_url }}</a><br/>
 			{% endif %}	
 			</div>
 		</div>
