@@ -29,10 +29,10 @@
 				{% trans 'App download:' %} <a href="{{ implementation.app_download_url }}">{{ implementation.app_download_url }}</a><br/>
 			{% endif %}	
 			{% if implementation.app_code_url %}
-				{% trans 'App code:' %} <a href="{{ app_code_url }}">{{ implementation.app_code_url }}</a><br/>
+				{% trans 'App code:' %} <a href="{{ implementation.app_code_url }}">{{ implementation.app_code_url }}</a><br/>
 			{% endif %}	
 			{% if implementation.server_code_url %}
-				{% trans 'Server code:' %} <a href="{{ server_code_url }}">{{ implementation.server_code_url }}</a><br/>
+				{% trans 'Server code:' %} <a href="{{ implementation.server_code_url }}">{{ implementation.server_code_url }}</a><br/>
 			{% endif %}	
 			</div>
 		</div>
