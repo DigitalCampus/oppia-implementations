@@ -15,8 +15,8 @@ class OppiaImplementation(models.Model):
     title = models.CharField(max_length=200, blank=False)
     url = models.CharField(max_length=200, unique=True)
     ip = models.GenericIPAddressField(blank=True, default=None, null=True)
-    oppia_code_version = models.CharField(max_length=200)
-    server_admin_email = models.CharField(max_length=200)
+    oppia_code_version = models.CharField(max_length=200, blank=True, default=None, null=True)
+    server_admin_email = models.CharField(max_length=200, blank=True, default=None, null=True)
     location = models.CharField(max_length=200,blank=True, default=None, null=True)
     description = models.TextField(blank=True, null=True, default=None)
     organisation = models.CharField(max_length=200,blank=True, default=None, null=True)
@@ -29,6 +29,7 @@ class OppiaImplementation(models.Model):
     app_code_url = models.CharField(max_length=200,blank=True, default=None, null=True)
     server_code_url = models.CharField(max_length=200,blank=True, default=None, null=True)
     is_active = models.BooleanField(default=False)
+    is_visible = models.BooleanField(default=False)
     order_by = models.IntegerField(default=0)
     
     class Meta:
