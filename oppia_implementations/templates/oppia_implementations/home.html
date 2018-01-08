@@ -13,17 +13,31 @@
 	<h2>{% trans 'OppiaMobile Implementations' %}</h2>
 	</div>
 	
+	<div class="container" style="max-width:800px;">
 	{% for implementation in implementations %}
-		<div style="max-width:600px; text-align:left; margin: 10px auto ">
+		
+		<div class="row">
+			<div class="col-xs-1">
 			{% thumbnail implementation.implementation_logo "50x50" crop="center" as im %}
-				<h3><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-			{% empty %}
-				<h3 style="padding-left:60px">
+				<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">				
 			{% endthumbnail %}
-			{{ implementation.title }}</h3>
-			<p>{{ implementation.description }} </p>
-			
+			</div>
+			<div class="col-xs-11">
+			<h3>{{ implementation.title }}</h3>
+			<p>{{ implementation.description }}</p>
+			{% if implementation.app_download_url %}
+				<p>{% trans 'App download:' %} <a href="{{ implementation.app_download_url }}">{{ implementation.app_download_url }}</a></p>
+			{% endif %}	
+			{% if implementation.app_code_url %}
+				<p>{% trans 'App code:' %} <a href="{{ app_code_url }}">{{ implementation.app_code_url }}</a></p>
+			{% endif %}	
+			{% if implementation.server_code_url %}
+				<p>{% trans 'Server code:' %} <a href="{{ server_code_url }}">{{ implementation.server_code_url }}</a></p>
+			{% endif %}	
+			</div>
 		</div>
+			
 	{% endfor %}
+	</div>
 
 {% endblock %}
