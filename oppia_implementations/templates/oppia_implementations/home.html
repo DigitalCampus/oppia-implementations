@@ -26,7 +26,13 @@
 			<h3 style="margin-top:5px">{{ implementation.title }}</h3>
 			<p>
 				{% if implementation.organisation %}
-					<b>{% trans 'Implementing organisation/s:' %}</b> {{ implementation.organisation }}<br/>
+					<b>{% trans 'Implementing organisation/s:' %}</b> 
+					{% if implementation.organisation_url %}
+						<a href="{{ implementation.organisation_url }}" target="_blank">{{ implementation.organisation }}</a>
+					{% else %}
+						{{ implementation.organisation }}
+					{% endif %}
+					<br/>
 				{% endif %}
 				{% if implementation.location %}
 					<b>{% trans 'Geography:' %}</b> {{ implementation.location }}

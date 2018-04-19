@@ -20,7 +20,7 @@ class OppiaImplementation(models.Model):
     description = models.TextField(blank=True, null=True, default=None)
     organisation = models.CharField(max_length=200,blank=True, default=None, null=True)
     organisation_logo = models.FileField(upload_to="organisation_logo",blank=True, default=None)
-    organsiation_url = models.CharField(max_length=200,blank=True, default=None, null=True)
+    organisation_url = models.CharField(max_length=200,blank=True, default=None, null=True)
     contact_name = models.CharField(max_length=200,blank=True, default=None, null=True)
     contact_email = models.CharField(max_length=200,blank=True, default=None, null=True)
     implementation_logo = models.FileField(upload_to="implementation_logo",blank=True, default=None)
