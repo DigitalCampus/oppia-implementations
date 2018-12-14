@@ -83,8 +83,6 @@ SITE_ID = 1
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-STATIC_ROOT = ROOT_DIR + '/static'
-MEDIA_ROOT = ROOT_DIR + '/media'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 STATICFILES_FINDERS = [
@@ -119,90 +117,6 @@ LANGUAGES = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-# Login and logout settings
-# https://docs.djangoproject.com/en/1.11/ref/settings/#login-redirect-url
-LOGIN_URL = '/profile/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-# Exempt URLs (used by LoginRequiredMiddleware)
-LOGIN_EXEMPT_URLS = (
-    r'^server/$',
-    r'^profile/login/$',
-    r'^profile/register/',
-    r'^profile/reset/',
-    r'^profile/setlang/$',
-    r'^profile/delete/complete/$',
-    r'^$',
-    r'^about/$',
-    r'^terms/$',
-    r'^api/',  # allow any URL under api/* - auth handled by api_key
-    r'^modules/api/',  # allow any URL under modules/api/* - auth handled by api_key
-    r'^badges/api/',  # allow any URL under badges/api/* - auth handled by api_key
-    r'^content/video-embed-helper/$',
-    r'^media/temp/',
-    r'^media/uploaded/',
-    r'^view/$',
-)
-
-# OppiaMobile Settings
-COURSE_UPLOAD_DIR = ROOT_DIR + '/oppia-uploads'
-
-OPPIA_METADATA = {
-    'NETWORK': True,  # 'DEVICE_ID': True,
-    'SIM_SERIAL': True,
-    'WIFI_ON': True,
-    'NETWORK_CONNECTED': True,
-    'BATTERY_LEVEL': True,
-    'GPS': False,
-}
-
-OPPIA_ALLOW_SELF_REGISTRATION = True    # turns on/off ability for users to self register
-OPPIA_SHOW_GRAVATARS = True
-OPPIA_STAFF_ONLY_UPLOAD = True          # prevents anyone without is_staff status being able to upload courses,
-# setting to False allows any registered user to upload a course
-
-OPPIA_POINTS_ENABLED = True            # determines if the points system is enabled
-# if OPPIA POINTS_ENABLED is false, then the next 3 settings are ignored
-OPPIA_STAFF_EARN_POINTS = False         # prevent staff from earning points
-OPPIA_COURSE_OWNERS_EARN_POINTS = False  # stops owners of courses earning points
-OPPIA_TEACHERS_EARN_POINTS = False      # stops teachers of courses earning points
-OPPIA_BADGES_ENABLED = True            # determines if the badges system is enabled
-
-BADGE_AWARD_METHOD_ALL_ACTIVITIES = 'all activities'
-BADGE_AWARD_METHOD_FINAL_QUIZ = 'final quiz'
-BADGE_AWARD_METHOD_ALL_QUIZZES = 'all quizzes'
-
-BADGE_AWARDING_METHOD = BADGE_AWARD_METHOD_ALL_ACTIVITIES
-
-OPPIA_GOOGLE_ANALYTICS_ENABLED = False
-OPPIA_GOOGLE_ANALYTICS_CODE = 'YOUR_GOOGLE_ANALYTICS_CODE'
-OPPIA_GOOGLE_ANALYTICS_DOMAIN = 'YOUR_DOMAIN'
-
-OPPIA_MAX_UPLOAD_SIZE = 5242880         # max course file upload size - in bytes
-
-OPPIA_VIDEO_FILE_TYPES = ("video/m4v", "video/mp4", "video/3gp", "video/3gpp")
-OPPIA_AUDIO_FILE_TYPES = ("audio/mpeg", "audio/amr", "audio/mp3")
-OPPIA_MEDIA_FILE_TYPES = OPPIA_VIDEO_FILE_TYPES + OPPIA_AUDIO_FILE_TYPES
-OPPIA_MEDIA_IMAGE_FILE_TYPES = ("image/png", "image/jpeg")
-
-OPPIA_UPLOAD_TRACKER_FILE_TYPES = [("application/json")]
-
-OPPIA_EXPORT_LOCAL_MINVERSION = 2017011400  # min version of the export block to process the quizzes locally
-
-# Android app PackageId - for Google Play link and opening activities from digest
-OPPIA_ANDROID_DEFAULT_PACKAGEID = 'org.digitalcampus.mobile.learning'
-OPPIA_ANDROID_PACKAGEID = 'org.digitalcampus.mobile.learning'
-OPPIA_ANDROID_ON_GOOGLE_PLAY = True # if the app is not on Google Play, we rely on the core version for store links
-
-API_LIMIT_PER_PAGE = 0
-
-DEVICE_ADMIN_ENABLED = False
-GCM_DEVICE_MODEL = 'deviceadmin.models.UserDevice'
-GCM_APIKEY = 'OPPIA_GOOGLEAPIKEY'
-
-DEVELOPMENT_SERVER = True
-
-
 # Import secret_settings.py (if exists)
 # > see settings_secret.py.template for reference
 try:
@@ -210,7 +124,4 @@ try:
 except ImportError:
     pass
 
-
-if DEVICE_ADMIN_ENABLED:
-    INSTALLED_APPS += ('deviceadmin', 'gcm', )
 
