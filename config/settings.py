@@ -117,6 +117,10 @@ LANGUAGES = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+
+THUMBNAIL_COLORSPACE = None
+THUMBNAIL_PRESERVE_FORMAT = True
+    
 # Import secret_settings.py (if exists)
 # > see settings_secret.py.template for reference
 try:
