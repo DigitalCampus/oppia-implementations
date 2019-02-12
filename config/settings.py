@@ -110,10 +110,7 @@ USE_I18N = True
 USE_L10N = True
 
 gettext = lambda s: s
-LANGUAGES = (
-    #('es', gettext('Spanish')),
-    ('en', gettext('English'))
-)
+LANGUAGES = ('en', gettext('English'))
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -124,7 +121,7 @@ THUMBNAIL_PRESERVE_FORMAT = True
 # Import secret_settings.py (if exists)
 # > see settings_secret.py.template for reference
 try:
-    from settings_secret import *
+    from config.settings_secret import *
 except ImportError:
     pass
 

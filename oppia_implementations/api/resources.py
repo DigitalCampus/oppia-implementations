@@ -1,6 +1,6 @@
 
 import json
-import urllib2
+import urllib
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -9,7 +9,6 @@ from tastypie.authorization import Authorization
 from tastypie.exceptions import BadRequest 
 
 from oppia_implementations.models import OppiaImplementation, ImplementationDataKV
-from urllib2 import URLError
 
 class OppiaImplementationResource(ModelResource):
     
@@ -36,7 +35,7 @@ class OppiaImplementationResource(ModelResource):
 
         try: 
             # check url actually exists and is valid Oppia server
-            oppia_server_data_test = urllib2.urlopen(oi_url + "server/").read()
+            oppia_server_data_test = urllib.urlopen(oi_url + "server/").read()
             
             oppia_server_data = json.loads(oppia_server_data_test)
             oppia_implementation, created = OppiaImplementation.objects.get_or_create(url=oi_url)

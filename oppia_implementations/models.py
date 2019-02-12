@@ -35,12 +35,12 @@ class OppiaImplementation(models.Model):
         verbose_name = _('Oppia Implementation')
         verbose_name_plural = _('Oppia Implementations')
     
-    def __unicode__(self):
+    def __str__(self):
         return self.title
     
 
 class ImplementationDataKV(models.Model):
-    implementation = models.ForeignKey(OppiaImplementation)
+    implementation = models.ForeignKey(OppiaImplementation, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     lastupdated_date = models.DateTimeField(auto_now=True)
     

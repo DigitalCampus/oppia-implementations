@@ -57,6 +57,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='implementationdatakv',
             name='implementation',
-            field=models.ForeignKey(to='oppia_implementations.OppiaImplementation'),
+            field=models.ForeignKey(to='oppia_implementations.OppiaImplementation', on_delete=models.CASCADE),
         ),
     ]
