@@ -50,11 +50,11 @@ class OppiaImplementationResource(ModelResource):
             try:
                 data_points = bundle.data['data']
                 for k,v in data_points.items():
-                    dataKV, created = ImplementationDataKV.objects.get_or_create(implementation=oppia_implementation,key=k)
-                    dataKV.implementation = oppia_implementation
-                    dataKV.key = k
-                    dataKV.value = v
-                dataKV.save()
+                    data_kv, created = ImplementationDataKV.objects.get_or_create(implementation=oppia_implementation,key=k)
+                    data_kv.implementation = oppia_implementation
+                    data_kv.key = k
+                    data_kv.value = v
+                    data_kv.save()
             except KeyError:
                 ImplementationDataKV.objects.filter(implementation=oppia_implementation).delete()
             

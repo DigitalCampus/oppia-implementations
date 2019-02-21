@@ -40,6 +40,7 @@ class OppiaImplementation(models.Model):
     
 
 class ImplementationDataKV(models.Model):
+    
     LAST_UPDATE_KEY = "LAST_UPDATED"
     
     implementation = models.ForeignKey(OppiaImplementation, on_delete=models.CASCADE)
