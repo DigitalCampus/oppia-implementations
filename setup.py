@@ -33,7 +33,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        "django == 1.11.15",
+        "django == 1.11.18",
 	    "django-tastypie == 0.14.0",
     ],
 )

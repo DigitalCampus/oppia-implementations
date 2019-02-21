@@ -40,12 +40,15 @@ class OppiaImplementation(models.Model):
     
 
 class ImplementationDataKV(models.Model):
+    LAST_UPDATE_KEY = "LAST_UPDATED"
+    
     implementation = models.ForeignKey(OppiaImplementation, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     lastupdated_date = models.DateTimeField(auto_now=True)
     
     key = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
+    is_visible = models.BooleanField(default=False)
    
     class Meta:
         verbose_name = _('Oppia Implementation Data')
