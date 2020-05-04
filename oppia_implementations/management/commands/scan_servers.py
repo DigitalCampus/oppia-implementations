@@ -20,6 +20,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from oppia_implementations.models import OppiaImplementation, ImplementationDataKV
 
+
 class BColors:
     HEADER = '\033[95m'
     OK = '\033[92m'
@@ -27,13 +28,9 @@ class BColors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
 
+
 class Command(BaseCommand):
-    help = _(u"Scans Oppia servers to get up to date info")
-
-
-    def add_arguments(self, parser):
-        pass
-        
+    help = _(u"Scans Oppia servers to get up to date info")        
 
     def handle(self, *args, **options):
         implementations = OppiaImplementation.objects.filter(is_active=True)
@@ -47,7 +44,7 @@ class Command(BaseCommand):
                 
                 # check version no
                 if implementation.oppia_code_version != datajson['version']:
-                    update = raw_input(_(u"%sVersion from server (%s) doesn't match the one stored (%s).%s Update [y/n]?" % (BColors.WARNING, datajson['version'], implementation.oppia_code_version, BColors.ENDC)))
+                    update = input(_(u"%sVersion from server (%s) doesn't match the one stored (%s).%s Update [y/n]?" % (BColors.WARNING, datajson['version'], implementation.oppia_code_version, BColors.ENDC)))
                     if update == 'y' :
                         implementation.oppia_code_version = datajson['version']
                         implementation.save()
@@ -55,7 +52,7 @@ class Command(BaseCommand):
                         
                 # check admin email
                 if implementation.server_admin_email != datajson['admin_email']:
-                    update = raw_input(_(u"%sAdmin email from server (%s) doesn't match the one stored (%s).%s Update [y/n]?" % (BColors.WARNING, datajson['admin_email'], implementation.server_admin_email, BColors.ENDC)))
+                    update = input(_(u"%sAdmin email from server (%s) doesn't match the one stored (%s).%s Update [y/n]?" % (BColors.WARNING, datajson['admin_email'], implementation.server_admin_email, BColors.ENDC)))
                     if update == 'y' :
                         implementation.server_admin_email = datajson['admin_email']
                         implementation.save()
@@ -70,11 +67,4 @@ class Command(BaseCommand):
             # update last scan date
             lastupdate, created = ImplementationDataKV.objects.get_or_create(implementation=implementation, key=ImplementationDataKV.LAST_UPDATE_KEY)   
             lastupdate.value = timezone.now()
-            lastupdate.save()
-                
-                
-                
-                
-                
-                
-                
+            lastupdate.save()              
