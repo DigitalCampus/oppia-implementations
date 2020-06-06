@@ -9,3 +9,6 @@
 /src
 /.idea
 /.eggs
+/env/
+/media/
+/static/
