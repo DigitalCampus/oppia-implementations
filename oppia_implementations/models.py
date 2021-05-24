@@ -39,13 +39,16 @@ class OppiaImplementation(models.Model):
 class ImplementationDataKV(models.Model):
     
     LAST_UPDATE_KEY = "LAST_UPDATED"
+    NO_COURSES_KEY = "NO_COURSES"
+    NO_USERS_KEY = "NO_USERS"
     
     implementation = models.ForeignKey(OppiaImplementation, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     lastupdated_date = models.DateTimeField(auto_now=True)
     
     key = models.CharField(max_length=200)
-    value = models.CharField(max_length=200)
+    value_str = models.CharField(max_length=200)
+    value_int = models.IntegerField(blank=True, default=None, null=True)
     is_visible = models.BooleanField(default=False)
    
     class Meta:

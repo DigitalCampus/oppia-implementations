@@ -66,5 +66,5 @@ class Command(BaseCommand):
                 
             # update last scan date
             lastupdate, created = ImplementationDataKV.objects.get_or_create(implementation=implementation, key=ImplementationDataKV.LAST_UPDATE_KEY)   
-            lastupdate.value = timezone.now()
+            lastupdate.value_str = timezone.now()
             lastupdate.save()              
