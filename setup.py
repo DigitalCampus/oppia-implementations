@@ -33,6 +33,9 @@ setup(
     ],
     install_requires=[
         "django == 2.2.20",
-	    "django-tastypie == 0.14.0",
+	    "Pillow==8.2.0",
+        "django-ses==1.0.3",
+        "sorl-thumbnail==12.7.0",
+        "djangorestframework==3.12.4"
     ],
 )
