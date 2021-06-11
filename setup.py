@@ -32,7 +32,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        "django == 2.2.22",
+        "django == 2.2.24",
 	    "Pillow==8.2.0",
         "django-ses==1.0.3",
         "sorl-thumbnail==12.7.0",
