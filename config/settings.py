@@ -73,7 +73,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sorl.thumbnail',
     'oppia_implementations',
-    'rest_framework' 
+    'rest_framework',
+    'rest_framework_api_key'
 ]
 
 TIME_ZONE = 'UTC'

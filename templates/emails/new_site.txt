@@ -1,0 +1,6 @@
+{% load i18n %}
+
+A new site has been added to Oppia Implementations
+(https://implementations.oppia-mobile.org):
+
+{{ new_site_url }}

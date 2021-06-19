@@ -65,6 +65,9 @@ class Command(BaseCommand):
                 print(_(u"%sServer unreachable%s" % (BColors.WARNING, BColors.ENDC)))
                 
             # update last scan date
-            lastupdate, created = ImplementationDataKV.objects.get_or_create(implementation=implementation, key=ImplementationDataKV.LAST_UPDATE_KEY)   
+            lastupdate, created = ImplementationDataKV.objects.get_or_create(
+                implementation=implementation,
+                key=ImplementationDataKV.LAST_UPDATE_KEY)   
             lastupdate.value_str = timezone.now()
-            lastupdate.save()              
+            lastupdate.save()
+            
