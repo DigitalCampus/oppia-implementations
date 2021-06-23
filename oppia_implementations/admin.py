@@ -14,7 +14,7 @@ class OppiaImplementationsAdmin(admin.ModelAdmin):
                     'is_visible')
     
 class ImplementationDataKVAdmin(admin.ModelAdmin):
-    list_display = ('implementation', 'key', 'value_str', 'value_int' )
+    list_display = ('implementation', 'key', 'value_str', 'value_int', 'value_bool')
     
     
 admin.site.register(OppiaImplementation, OppiaImplementationsAdmin) 

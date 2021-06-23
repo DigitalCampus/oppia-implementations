@@ -41,17 +41,96 @@ class ImplementationDataKV(models.Model):
     LAST_UPDATE_KEY = "LAST_UPDATED"
     NO_COURSES_KEY = "NO_COURSES"
     NO_USERS_KEY = "NO_USERS"
+    EMAIL_NOTIFICATIONS = "EMAIL_NOTIFICATIONS"
+    EMAIL_NOTIF_ADDRESS = "EMAIL_NOTIF_ADDRESS"
     
     implementation = models.ForeignKey(OppiaImplementation, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     lastupdated_date = models.DateTimeField(auto_now=True)
     
     key = models.CharField(max_length=200)
-    value_str = models.CharField(max_length=200)
+    value_str = models.CharField(max_length=200, blank=True, default=None, null=True)
     value_int = models.IntegerField(blank=True, default=None, null=True)
+    value_bool = models.BooleanField(blank=True, null=True)
     is_visible = models.BooleanField(default=False)
    
     class Meta:
         verbose_name = _('Oppia Implementation Data')
         verbose_name_plural = _('Oppia Implementation Data')
+        
+    @staticmethod
+    def get_property(property_key, default_value):
+        try:
+            prop = ImplementationDataKV.objects.get(key=property_key)
+            value = None
+            if prop.str_value is not None:
+                value = prop.str_value
+            elif prop.int_value is not None:
+                value = prop.int_value
+            elif prop.bool_value is not None:
+                value = prop.bool_value
+            if value is not None:
+                return value
+        except ImplementationDataKV.DoesNotExist:
+            pass
+
+        return default_value
+
+    @staticmethod
+    def get_int(property_key, default_value):
+        try:
+            prop = ImplementationDataKV.objects.get(key=property_key)
+            if prop.int_value is not None:
+                return prop.int_value
+        except ImplementationDataKV.DoesNotExist:
+            pass
+        return default_value
+
+    @staticmethod
+    def get_string(property_key, default_value):
+        try:
+            prop = ImplementationDataKV.objects.get(key=property_key)
+            if prop.str_value is not None:
+                return prop.str_value
+        except ImplementationDataKV.DoesNotExist:
+            pass
+        return default_value
+
+    @staticmethod
+    def get_bool(property_key, default_value):
+        try:
+            prop = ImplementationDataKV.objects.get(key=property_key)
+            if prop.bool_value is not None:
+                return prop.bool_value
+        except ImplementationDataKV.DoesNotExist:
+            pass
+        return default_value
+
+    @staticmethod
+    def set_int(property_key, value):
+        prop, created = ImplementationDataKV.objects \
+            .get_or_create(key=property_key)
+        prop.int_value = value
+        prop.save()
+
+    @staticmethod
+    def set_string(property_key, value):
+        prop, created = ImplementationDataKV.objects \
+            .get_or_create(key=property_key)
+        prop.str_value = value
+        prop.save()
+
+    @staticmethod
+    def set_bool(property_key, value):
+        prop, created = ImplementationDataKV.objects \
+            .get_or_create(key=property_key)
+        prop.bool_value = value
+        prop.save()
+
+    @staticmethod
+    def delete_key(property_key):
+        ImplementationDataKV.objects.get(key=property_key).delete()
+
+    def __str__(self):
+        return self.key
         

@@ -23,11 +23,9 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
     permission_classes = [HasAPIKey]
     
     def create(self, request, *args, **kwargs):
-
-        # @TODO - needs to be checked
-        imp_url = request.scheme + "://" + request.META['SERVER_NAME'] + '/'
         
         imp_data = JSONParser().parse(request)
+        imp_url= imp_data['server_url']
         
         try:
             oi = OppiaImplementation.objects.get(url=imp_url)
@@ -49,9 +47,17 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
             
         oi.save()
         
+        if 'email_notifications' in imp_data:
+            defaults = { 'value_bool': False }
+            ImplementationDataKV.objects.update_or_create(
+                    implementation=oi,
+                    key=ImplementationDataKV.EMAIL_NOTIFICATIONS,
+                    defaults=defaults
+                    )
+        
         if 'statistics' in imp_data:
             for k, v in imp_data['statistics'].items():
-                defaults = { 'value_str': v }
+                defaults = { 'value_int': v }
                 ImplementationDataKV.objects.update_or_create(
                     implementation=oi,
                     key=k,
