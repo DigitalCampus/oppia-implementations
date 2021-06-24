@@ -66,6 +66,10 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
                     key=ImplementationDataKV.EMAIL_NOTIF_ADDRESS,
                     defaults=defaults
                     )
+        else:
+            ImplementationDataKV.objects.get(
+                    implementation=oi,
+                    key=ImplementationDataKV.EMAIL_NOTIF_ADDRESS).delete()
         
         if 'statistics' in imp_data:
             for k, v in imp_data['statistics'].items():
