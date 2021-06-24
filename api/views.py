@@ -24,6 +24,8 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         
+        print(request.META.get('REMOTE_ADDR', '0.0.0.0'))
+        
         imp_data = JSONParser().parse(request)
         imp_url= imp_data['server_url']
         
@@ -32,12 +34,13 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
         except OppiaImplementation.DoesNotExist:
             oi = OppiaImplementation()
             oi.url = imp_url
+
             # send mail
             emailer.send_oppia_email(
                     template_html='emails/new_site.html',
                     template_text='emails/new_site.txt',
                     subject="New Site registered",
-                    fail_silently=False,
+                    fail_silently=True,
                     recipients=[settings.SERVER_EMAIL],
                     new_site_url=imp_url,
                     )
@@ -45,6 +48,7 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
         if 'title' in imp_data:
             oi.title = imp_data['title']
             
+        oi.ip = request.META.get('REMOTE_ADDR', '0.0.0.0')
         oi.save()
         
         if 'email_notifications' in imp_data:
@@ -69,6 +73,15 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
             implementation=oi,
             key=ImplementationDataKV.LAST_UPDATE_KEY,
             defaults=defaults
+            )
+        
+        emailer.send_oppia_email(
+            template_html='emails/site_updated.html',
+            template_text='emails/site_updated.txt',
+            subject="Site updated",
+            fail_silently=True,
+            recipients=[settings.SERVER_EMAIL],
+            site_url=imp_url,
             )
         
         return Response(status=status.HTTP_201_CREATED)
