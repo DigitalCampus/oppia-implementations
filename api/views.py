@@ -52,10 +52,18 @@ class OppiaImplementationViewSet(viewsets.ModelViewSet):
         oi.save()
         
         if 'email_notifications' in imp_data:
-            defaults = { 'value_bool': False }
+            defaults = { 'value_bool': imp_data['email_notifications']}
             ImplementationDataKV.objects.update_or_create(
                     implementation=oi,
                     key=ImplementationDataKV.EMAIL_NOTIFICATIONS,
+                    defaults=defaults
+                    )
+            
+        if 'email_notif_email' in imp_data:
+            defaults = { 'value_str': imp_data['email_notif_email']}
+            ImplementationDataKV.objects.update_or_create(
+                    implementation=oi,
+                    key=ImplementationDataKV.EMAIL_NOTIF_ADDRESS,
                     defaults=defaults
                     )
         

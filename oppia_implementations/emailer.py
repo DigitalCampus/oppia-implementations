@@ -12,7 +12,6 @@ def send_oppia_email(
         subject="",
         fail_silently=False,
         recipients=[],
-        attachment_from_model=None,
         **context):
     """
     Base email task function
@@ -38,6 +37,4 @@ def send_oppia_email(
                                   from_email,
                                   recipients)
     mail.attach_alternative(html_content, "text/html")
-    if attachment_from_model:
-        mail.attach_file(attachment_from_model)
     return mail.send()
