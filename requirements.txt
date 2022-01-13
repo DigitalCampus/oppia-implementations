@@ -4,3 +4,4 @@ sorl-thumbnail==12.7.0
 django-ses==1.0.3
 djangorestframework==3.12.4
 djangorestframework-api-key==2.*
+mysqlclient==2.1.0
