@@ -33,7 +33,7 @@ setup(
     ],
     install_requires=[
         "django == 3.2.13",
-	    "Pillow==9.1.0",
+	    "Pillow==9.1.1",
         "django-ses==3.0.1",
         "sorl-thumbnail==12.8.0",
         "djangorestframework==3.13.1",
