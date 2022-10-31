@@ -32,11 +32,11 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        "django == 3.2.15",
-	    "Pillow==9.1.1",
-        "django-ses==3.0.1",
-        "sorl-thumbnail==12.8.0",
-        "djangorestframework==3.13.1",
+        "django==4.1.2",
+	    "Pillow==9.3.0",
+        "django-ses==3.2.1",
+        "sorl-thumbnail==12.9.0",
+        "djangorestframework==3.14.0",
         "djangorestframework-api-key==2.2.0"
     ],
 )

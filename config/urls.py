@@ -15,10 +15,10 @@ Including another URLconf
 """
 
 from django.conf import settings
-from django.conf.urls import url, include
+from django.urls import path, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('oppia_implementations.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('oppia_implementations.urls')),
 ]
