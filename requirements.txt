@@ -1,7 +1,7 @@
 django==4.1.6
-Pillow==9.3.0
+Pillow==9.4.0
 sorl-thumbnail==12.9.0
-django-ses==3.2.1
+django-ses==3.3.0
 djangorestframework==3.14.0
-djangorestframework-api-key==2.2.0
+djangorestframework-api-key==2.3.0
 mysqlclient==2.1.1
