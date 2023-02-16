@@ -1,4 +1,4 @@
-django==4.1.6
+django==4.1.7
 Pillow==9.4.0
 sorl-thumbnail==12.9.0
 django-ses==3.3.0
