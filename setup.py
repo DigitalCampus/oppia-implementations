@@ -8,7 +8,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-oppia-implementations',
-    version='0.2.0',
+    version='0.3.0',
     packages=['oppia_implementations',
               'oppia_implementations.api',
              ],
@@ -32,11 +32,11 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        "django==4.1.7",
-	    "Pillow==9.3.0",
-        "django-ses==3.2.1",
+        "django==4.2",
+	    "Pillow==9.5.0",
+        "django-ses==3.3.0",
         "sorl-thumbnail==12.9.0",
         "djangorestframework==3.14.0",
-        "djangorestframework-api-key==2.2.0"
+        "djangorestframework-api-key==2.3.0"
     ],
 )
