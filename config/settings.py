@@ -41,7 +41,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,12 +111,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 THUMBNAIL_COLORSPACE = None
 THUMBNAIL_PRESERVE_FORMAT = True
-    
+
 # Import secret_settings.py (if exists)
 # > see settings_secret.py.template for reference
 try:
     from config.settings_secret import *
 except ImportError:
     pass
-
-
