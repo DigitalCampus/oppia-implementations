@@ -1,5 +1,5 @@
-django==4.2.3
-Pillow==9.5.0
+django==4.2.6
+Pillow==10.0.1
 sorl-thumbnail==12.9.0
 django-ses==3.5.0
 djangorestframework==3.14.0
