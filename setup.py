@@ -35,7 +35,7 @@ setup(
         "Pillow==10.3.0",
         "django-ses == 3.5.2",
         "sorl-thumbnail==12.10.0",
-        "djangorestframework==3.14.0",
+        "djangorestframework==3.15.2",
         "djangorestframework-api-key==3.0.0"
     ],
 )
